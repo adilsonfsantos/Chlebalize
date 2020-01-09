@@ -1,10 +1,14 @@
-/* 
+/*
     Author: Leonardo Zambão
     URL: www.chleba.net
     Version: 1.2
     Date: 2020 - 01 - 09
     !Important: alterar apenas o arquivo com extenção .scss
 */
+
+//Variaveis
+$font-size: 10px;
+
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
@@ -30,11 +34,6 @@
   }
 }
 
-$min_width: 320px;
-$max_width: 1000px;
-$min_font: 16px;
-$max_font: 32px;
-
 @mixin square($size){
     width: $size;
     height: $size;
@@ -51,15 +50,15 @@ $max_font: 32px;
     text-decoration: none;
     box-sizing: border-box;
 }
-*::before, 
+*::before,
 *::after{box-sizing: border-box;display: block;}
 @supports (scroll-behavior: smooth) {
     html{
         scroll-behavior: smooth;
     }
 }
-html{ 
-    font-size: 62.5%; 
+html{
+    font-size: $font-size;
     // @include font-responsive($min_width, $max_width, $min_font, $max_font);
     font-family: sans-serif;
 }
@@ -69,23 +68,32 @@ a{
 a:hover{
     text-decoration: none;
 }
-a,p,span,font,figcaption{
-    font-size: 1.6rem;
+a,
+p,
+span,
+font,
+figcaption {
+  @include font-responsive(320px, 1920px, $font-size * 1.6, $font-size * 1.6);
 }
-h1{
-    font-size: 2.5rem;
+
+h1 {
+  @include font-responsive(320px, 1920px, $font-size * 2.5, $font-size * 4);
 }
-h2,h3{
-    font-size: 2.2rem;
+
+h2,
+h3 {
+  @include font-responsive(320px, 1920px, $font-size * 2, $font-size * 3);
 }
-h4,h5{
-    font-size: 1.8rem;
+
+h4,
+h5 {
+  @include font-responsive(320px, 1920px, $font-size * 1.8 $font-size * 2.5);
 }
 section,header,footer,article,figure,figcaption,aside,nav{
     display: block;
 }
 [class*="parallax"]{
-    position: relative; 
+    position: relative;
     transition: all 1ms linear;
 }
 .absolute{
@@ -110,7 +118,7 @@ section,header,footer,article,figure,figcaption,aside,nav{
 }
 .col-05{
     width: 20%;
-} 
+}
 [class*="flex"]{
     display: flex;
 }
@@ -184,7 +192,7 @@ textarea::placeholder{font-family: inherit;color: inherit;}
 .menu-button{
     position: relative;
     width: 40px;
-    height: 35px; 
+    height: 35px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -221,20 +229,20 @@ textarea::placeholder{font-family: inherit;color: inherit;}
                 }
             }
         }
-    } 
+    }
 }
 .loading-box{
-    position: fixed; 
-    top:0; 
+    position: fixed;
+    top:0;
     left:0;
-    width: 100%; 
-    width: 100vw; 
-    height: 100%; 
-    background: rgba(51,51,51,0.99); 
-    z-index:9999; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    width: 100%;
+    width: 100vw;
+    height: 100%;
+    background: rgba(51,51,51,0.99);
+    z-index:9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .lds-ellipsis {
         display: inline-block;
         position: relative;
